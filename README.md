@@ -1,11 +1,25 @@
 JVRFetchedResultsControllerDataSource
 =====================================
 
-A reusable class that combines UITableViewDataSource and NSFetchedResultsControllerDelegate. Deletion and addition of table view cells are also supported. To use it, you will also need a class that conforms to the JVRFetchedResultsControllerDataSourceDelegate protocol, which will handle the setup and deletion of individual cells.
+A reusable class that combines `UITableViewDataSource` and `NSFetchedResultsControllerDelegate`. Deletion and addition of table view cells are also supported. To use it, you will also need a class that conforms to the `JVRFetchedResultsControllerDataSourceDelegate` protocol, which will handle the setup and deletion of individual cells. For details about the usage, see the simple examples below, or refer to the example project.
 
-### Example for the delegate
+### Example for helper delegate
+This object can be used to configure individual table view cells using the logic in the `tableView:cellForRowAtIndexPath:` method found in the `UITableViewDataSource` protocol. It also has access to the `NSManagedObjectContext` property of the data source, so it is responsible for handling item removal.
 
 ```objc
+// MyHelperDelegate.h
+
+#import "JVRFetchedResultsControllerDataSource.h"
+
+@interface MyHelperDelegate : NSObject<JVRFetchedResultsControllerDataSourceDelegate>
+
+@property (nonatomic, strong) NSManagedObjectContext
+
+@end
+
+// MyHelperDelegate.m
+@implementation MyHelperDelegate
+
 - (NSString *)fetchCellIdentifierForObject:(id)anObject
 {
     if ([anObject isKindOfClass:[MyClass class]])
@@ -18,24 +32,29 @@ A reusable class that combines UITableViewDataSource and NSFetchedResultsControl
     }
 }
 
-- (UITableViewCell *)configureCell:(MyCell *)cell withObject:(Item *)object
+- (UITableViewCell *)configureCell:(MyCell *)cell withObject:(NSManagedObject *)object
 {
-    UITableViewCell *currentCell = cell;
-    currentCell.textLabel.text = object.title;
+    cell.textLabel.text = object.property;
 }
 
-- (void)deleteObject:(Item *)object
+- (void)deleteObject:(NSManagedObject *)object
 {
     [self.managedObjectContext deleteObject:object];
     NSError *e;
     [self.managedObjectContext save:&e];
 }
 
+@end
 ```
 
-### Example usage in a UITableViewController class:
+### Example usage in a Table View Controller:
+With the help of `JVRFetchedResultsControllerDataSource`, regular table view setup and `NSFetchedResultsControllerDelegate` methods can be removed from `UITableViewController` classes, leaving room for more important parts. The data source class requires a configured `NSFetchedResultsController` object and a helper delegate.
 
 ```objc
+// MyTableViewController.h
+
+@implementation JVEItemsView
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,9 +75,10 @@ A reusable class that combines UITableViewDataSource and NSFetchedResultsControl
 
 - (void)setupFetchedResultsDataSource
 {
-    self.fetchedResultsController = [JVRFetchedResultsControllerDataSource dataSourceForTableView:self.tableView
-                                                                     withFetchedResultsController:self.fetchedResultsController
-                                                                                    usingDelegate:[[MyCellConfigurator alloc] init]];
+    self.fetchResultsControllerDataSource = [JVRFetchedResultsControllerDataSource dataSourceForTableView:self.tableView
+                                                                             withFetchedResultsController:self.fetchedResultsController
+                                                                                            usingDelegate:[MyHelperDelegate delegateWithManagedObjectContext:self.managedObjectContext]];
 }
 
+@end
 ```
