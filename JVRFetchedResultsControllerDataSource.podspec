@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JVRFetchedResultsControllerDataSource"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "A reusable class that combines UITableViewDataSource and NSFetchedResultsControllerDelegate."
   s.homepage     = "https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource"
   s.license      = "MIT"
@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource.git", :tag => s.version }
   s.source_files  = "*.{h,m}"
   s.exclude_files = "Lighter Core Data/*"
+  s.public_header_files = "/*.h"
   s.framework  = "CoreData"
   s.requires_arc = true
 end
