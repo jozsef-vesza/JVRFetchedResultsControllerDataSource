@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DBC4BB2C-C906-4FEE-BFA0-D6159D90D86C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Lighter Core Data</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>34A222F9-A5B9-475D-A3C8-5C62DC1FED22</key>
+		<string>https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Lighter Core Data/Lighter Core Data.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>34A222F9-A5B9-475D-A3C8-5C62DC1FED22</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>34A222F9-A5B9-475D-A3C8-5C62DC1FED22</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>34A222F9-A5B9-475D-A3C8-5C62DC1FED22</string>
+			<key>IDESourceControlWCCName</key>
+			<string>JVRFetchedResultsControllerDataSource</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,7 @@
+before_install:
+  - brew unlink xctool
+  - brew update
+  - brew install xctool
+language: objective-c
+script:
+  - xctool -workspace "Lighter Core Data/Lighter Core Data.xcworkspace" scheme "Lighter Core Data" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO

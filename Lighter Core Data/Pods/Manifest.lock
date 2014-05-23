@@ -1,0 +1,14 @@
+PODS:
+  - JVRFetchedResultsControllerDataSource (0.0.3)
+
+DEPENDENCIES:
+  - JVRFetchedResultsControllerDataSource (from `https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource.git`)
+
+EXTERNAL SOURCES:
+  JVRFetchedResultsControllerDataSource:
+    :git: https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource.git
+
+SPEC CHECKSUMS:
+  JVRFetchedResultsControllerDataSource: 520426e542a1f981f1e9b01362398ced56b31793
+
+COCOAPODS: 0.33.1

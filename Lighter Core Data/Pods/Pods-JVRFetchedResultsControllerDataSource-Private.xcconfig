@@ -1,0 +1,5 @@
+#include "Pods-JVRFetchedResultsControllerDataSource.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/JVRFetchedResultsControllerDataSource" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/JVRFetchedResultsControllerDataSource"
+OTHER_LDFLAGS = -ObjC ${PODS_JVRFETCHEDRESULTSCONTROLLERDATASOURCE_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
