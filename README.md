@@ -82,3 +82,11 @@ With the help of `JVRFetchedResultsControllerDataSource`, regular table view set
 
 @end
 ```
+
+### Installation
+The recommended way of using this class in your project is installing through [CocoaPods](http://cocoapods.org), using this Podfile:
+```ruby
+platform :ios, "7.1"
+
+pod 'JVRFetchedResultsControllerDataSource'
+```
