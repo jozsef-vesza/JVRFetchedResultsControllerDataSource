@@ -1,4 +1,4 @@
-JVRFetchedResultsControllerDataSource ![alt text](https://travis-ci.org/jozsef-vesza/JVRFetchedResultsControllerDataSource.svg)
+JVRFetchedResultsControllerDataSource [![Build Status](https://travis-ci.org/jozsef-vesza/JVRFetchedResultsControllerDataSource.svg?branch=master)](https://travis-ci.org/jozsef-vesza/JVRFetchedResultsControllerDataSource)
 =====================================
 
 A reusable class that combines `UITableViewDataSource` and `NSFetchedResultsControllerDelegate`. Deletion and addition of table view cells are also supported. To use it, you will also need a class that conforms to the `JVRFetchedResultsControllerDataSourceDelegate` protocol, which will handle the setup and deletion of individual cells. For details about the usage, see the simple examples below, or refer to the example project.
