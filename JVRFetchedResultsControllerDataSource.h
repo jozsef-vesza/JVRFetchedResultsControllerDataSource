@@ -12,26 +12,7 @@
 /**
  *  Helper delegate implemented by the class responsible for table view cell configuration and handling of item deletion
  */
-@protocol JVRFetchedResultsControllerDataSourceDelegate
-
-/**
- *  Retrieve the reuse identifier for a table view cell based on an object shown in it
- *
- *  @param object The object in the cell
- *
- *  @return An NSString instance with the identifier
- */
-- (NSString *)fetchReuseIdentifierForObject:(id)object;
-
-/**
- *  Customize a given table view cell using the properties of an object
- *
- *  @param cell   The cell to be configured
- *  @param object The object in the cell
- *
- *  @return The configured UITableViewCell instance
- */
-- (UITableViewCell *)configureCell:(id)cell withObject:(id)object;
+@protocol JVRCoreDataHelperDelegate
 
 /**
  *  Handle deletion of an object shown in the table view
@@ -41,6 +22,11 @@
 - (void)deleteObject:(id)object;
 
 @end
+
+/**
+ *  Helper delegate implemented by the class responsible for collection view cell configuration
+ */
+@protocol JVRCellConfiguratorDelegate;
 
 /**
  *  JVRBaseTableViewDataSource is meant to be used by UITableViewController classes as data source and by NSFetchedResultsController as delegate
@@ -63,7 +49,7 @@
  */
 + (instancetype)dataSourceForTableView:(UITableView *)tableView
           withFetchedResultsController:(NSFetchedResultsController *)controller
-                         usingDelegate:(id <JVRFetchedResultsControllerDataSourceDelegate>)delegate;
+                         usingDelegate:(id <JVRCoreDataHelperDelegate>)delegate usingCellConfigurator:(id <JVRCellConfiguratorDelegate>)cellConfigurator;
 
 /**
  *  The object at the current index path

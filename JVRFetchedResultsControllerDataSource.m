@@ -12,18 +12,19 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) id<JVRFetchedResultsControllerDataSourceDelegate> delegate;
+@property (nonatomic, strong) id<JVRCoreDataHelperDelegate> delegate;
+@property (nonatomic, strong) id<JVRCellConfiguratorDelegate> cellConfigurator;
 
 @end
 
 @implementation JVRFetchedResultsControllerDataSource
 
-+ (instancetype)dataSourceForTableView:(UITableView *)tableView withFetchedResultsController:(NSFetchedResultsController *)controller usingDelegate:(id <JVRFetchedResultsControllerDataSourceDelegate>)delegate
++ (instancetype)dataSourceForTableView:(UITableView *)tableView withFetchedResultsController:(NSFetchedResultsController *)controller usingDelegate:(id <JVRCoreDataHelperDelegate>)delegate usingCellConfigurator:(id <JVRCellConfiguratorDelegate>)cellConfigurator
 {
-    return [[self alloc] initWithTableView:tableView withFetchedResultsController:controller withDelegate:delegate];
+    return [[self alloc] initWithTableView:tableView withFetchedResultsController:controller withDelegate:delegate usingCellConfigurator:cellConfigurator];
 }
 
-- (instancetype)initWithTableView:(UITableView *)tableView withFetchedResultsController:(NSFetchedResultsController *)controller withDelegate:(id<JVRFetchedResultsControllerDataSourceDelegate>)delegate
+- (instancetype)initWithTableView:(UITableView *)tableView withFetchedResultsController:(NSFetchedResultsController *)controller withDelegate:(id<JVRCoreDataHelperDelegate>)delegate usingCellConfigurator:(id <JVRCellConfiguratorDelegate>)cellConfigurator
 {
     self = [super init];
     if (self)
@@ -33,6 +34,7 @@
         _fetchedResultsController = controller;
         _fetchedResultsController.delegate = self;
         _delegate = delegate;
+        _cellConfigurator = cellConfigurator;
         NSError *error;
         [_fetchedResultsController performFetch:&error];
     }
@@ -57,9 +59,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id objectAtIndex = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *reuseIdentifierForCell = [self.delegate fetchReuseIdentifierForObject:objectAtIndex];
+    NSString *reuseIdentifierForCell = [self.cellConfigurator fetchReuseIdentifierForObject:objectAtIndex];
     id cellAtIndex = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierForCell forIndexPath:indexPath];
-    cellAtIndex = [self.delegate configureCell:cellAtIndex withObject:objectAtIndex];
+    cellAtIndex = [self.cellConfigurator configureCell:cellAtIndex withObject:objectAtIndex];
 
     return cellAtIndex;
 }

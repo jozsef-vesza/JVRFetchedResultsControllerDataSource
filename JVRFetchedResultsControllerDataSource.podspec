@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JVRFetchedResultsControllerDataSource"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "A reusable class that combines UITableViewDataSource and NSFetchedResultsControllerDelegate."
   s.homepage     = "https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource"
   s.license      = "MIT"
@@ -13,4 +13,5 @@ Pod::Spec.new do |s|
   s.public_header_files = "*.h"
   s.framework  = "CoreData"
   s.requires_arc = true
+  s.dependency 'JVRCellConfiguratorDelegate'
 end
