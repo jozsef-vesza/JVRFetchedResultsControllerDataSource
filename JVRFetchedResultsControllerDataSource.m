@@ -60,9 +60,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id objectAtIndex = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *reuseIdentifierForCell = [self.cellConfigurator fetchReuseIdentifierForObject:objectAtIndex];
+    NSString *reuseIdentifierForCell = [self.cellConfigurator fetchReuseIdentifierforObject:objectAtIndex];
     id cellAtIndex = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierForCell forIndexPath:indexPath];
-    cellAtIndex = [self.cellConfigurator configureCell:cellAtIndex withObject:objectAtIndex];
+    cellAtIndex = [self.cellConfigurator configureCell:cellAtIndex usingObject:objectAtIndex];
 
     return cellAtIndex;
 }
