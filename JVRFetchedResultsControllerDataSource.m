@@ -7,7 +7,7 @@
 //
 
 #import "JVRFetchedResultsControllerDataSource.h"
-#import "JVRCellConfiguratorDelegate"
+#import "JVRCellConfiguratorDelegate.h"
 
 @interface JVRFetchedResultsControllerDataSource ()
 

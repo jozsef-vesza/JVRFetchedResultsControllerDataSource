@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JVRFetchedResultsControllerDataSource"
-  s.version      = "0.0.9"
+  s.version      = "1.0.0"
   s.summary      = "A reusable class that combines UITableViewDataSource and NSFetchedResultsControllerDelegate."
   s.homepage     = "https://github.com/jozsef-vesza/JVRFetchedResultsControllerDataSource"
   s.license      = "MIT"
